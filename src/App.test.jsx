@@ -1,4 +1,5 @@
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react'
+import { scryRenderedComponentsWithType } from 'react-dom/test-utils'
 import App from './App'
 
 test('Should render the header', async () => {
