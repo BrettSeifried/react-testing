@@ -1,5 +1,5 @@
 import { render, screen, waitForElementToBeRemoved } from '@testing-library/react'
-import Home from './Home'
+import App from '../../App'
 
 const user = {
   id: 1,
@@ -13,30 +13,28 @@ const user = {
 }
 
 test('Should render name,motto, interests heading, avatar, header image, list of user likes.', async () => {
-  render(<Home />)
+  render(<App />)
   //   name
   const name = await screen.findByRole('heading', { name: /vonta/i })
   expect(name).toBeInTheDocument()
 
   // motto
-  // const motto = await screen.findByLabelText(/motto/i)
-  // expect(motto).toBeInTheDocument()
+  const motto = await screen.findByLabelText(/motto/i)
+  expect(motto).toBeInTheDocument()
 
   // // interest header
-  // const profileHeader = await screen.findByText(/interests/i)
-  // expect(profileHeader).toBeInTheDocument()
+  const profileHeader = await screen.findByText(/interests/i)
+  expect(profileHeader).toBeInTheDocument()
 
   // //   //   avatar
-  // const avatar = await screen.findByAltText(/avatar/i)
-  // expect(avatar).toBeInTheDocument()
+  const avatar = await screen.findByAltText(/avatar/i)
+  expect(avatar).toBeInTheDocument()
 
   // //   //header image
-  // const header = screen.findByAltText(/header/i)
-  // expect(header).toBeInTheDocument()
+  const header = await screen.findByAltText(/header/i)
+  expect(header).toBeInTheDocument()
 
   // //list of likes
-  // const interest = await screen.findByRole(/list/i)
-  // expect(interest).toBeInTheDocument()
-
-  await waitForElementToBeRemoved(() => screen.getByText(/loading/i))
+  const interest = await screen.findByRole('list')
+  expect(interest).toBeInTheDocument()
 })
